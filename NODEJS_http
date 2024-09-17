@@ -1,0 +1,43 @@
+//  index.js
+
+
+// const fs=require("fs");
+// const os=require("os");
+// console.log(os.cpus().length);
+// //blocking request......
+// /*const  res=fs.readFileSync("contacts.txt","utf-8");
+// console.log(res);*/
+// fs.readFile("contacts.txt","utf-8",(err,res)=>{
+// console.log(res);
+// }); 
+const http=require("http");
+const fs=require("fs");
+const myserver=http.createServer((req,res)=>{
+    const log=`${Date.now()}:New Req recieved\n`;
+fs.appendFile("log.txt",log, (err,data) => {
+    res.end("hello from server Again");
+   });
+});
+
+myserver.listen(8000,()=>console.log("server started !"));
+
+
+// package.json
+
+{
+  "name": "2.1-using-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+
+
+
